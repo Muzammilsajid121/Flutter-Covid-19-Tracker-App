@@ -24,33 +24,41 @@ class StatesServices{
 
     //FOR COUNTRIES
 
-    //   Future<List<dynamic>> fetchWorldCountriesApi()async{
+      Future<List<dynamic>> fetchWorldCountriesApi()async{
    
-    //  final response = await http.get(Uri.parse(AppUrl.countriesList));
+     final response = await http.get(Uri.parse(AppUrl.countriesList));
 
-    //   if(response.statusCode==200){
-    //     var data = jsonDecode(response.body);
-    //     print(data);
-    //     return data;
-    //   }else{
+      if(response.statusCode==200){
+        var data = jsonDecode(response.body);
+        print(data);
+        return data;
+      }else{
         
-    //     throw Exception('Error');
+        throw Exception('Error');
         
-    //   }
-    // }
-
-    Future<List<WorldCountriesModel>> fetchWorldCountriesApi() async {
-    final response = await http.get(Uri.parse(AppUrl.countriesList));
-
-    if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-      List<WorldCountriesModel> countries = data
-          .map((json) => WorldCountriesModel.fromJson(json))
-          .toList(); // Convert each JSON item to WorldCountry
-      return countries;
-    } else {
-      throw Exception('Error');
+      }
     }
-  }
+
+// Future<List<WorldCountriesModel>> fetchWorldCountriesApi() async {
+//   try {
+//     final response = await http.get(Uri.parse(AppUrl.countriesList));
+
+//     if (response.statusCode == 200) {
+//       List<dynamic> data = jsonDecode(response.body);
+//       print("Raw JSON data: $data"); // Print raw JSON data
+//       List<WorldCountriesModel> countries = data
+//           .map((json) => WorldCountriesModel.fromJson(json))
+//           .toList(); // Convert each JSON item to WorldCountry
+//       return countries;
+//     } else {
+//       print("Error - HTTP Status Code: ${response.statusCode}");
+//       throw Exception('Error');
+//     }
+//   } catch (e) {
+//     print("Exception during API call: $e");
+//     throw Exception('Error');
+//   }
+// }
+
 
 }
