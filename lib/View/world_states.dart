@@ -1,4 +1,5 @@
 import 'package:covid_tracker_app/View/countries_list.dart';
+import 'package:covid_tracker_app/View/countrylist.dart';
 import 'package:covid_tracker_app/models/world_states_model.dart';
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,7 @@ final width = MediaQuery.sizeOf(context).width *1;
                     foregroundColor: Colors.white
                   ),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const  CountriesList()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const  CountriesList2()));
                   }, 
                   child:const  Text("Track countries")),
               ),
