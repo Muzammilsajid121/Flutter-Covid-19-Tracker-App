@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
 
+
 class WorldStates extends StatefulWidget {
   const WorldStates({super.key});
 
@@ -32,6 +33,27 @@ class _WorldStatesState extends State<WorldStates> with TickerProviderStateMixin
   ];
   //
   StatesServices statesServices = StatesServices(); // takay api wali screen s data l sakay
+
+
+  // //API CODE
+  // Future<WorldStatesModel> fetchWorldStatesApi() async{
+  //   final response = await http.get(Uri.parse(AppUrl.worldStatesApi));
+
+  //   var data = jsonDecode(response.body.toString());
+
+  //     if(response.statusCode==200){
+        
+  //       return WorldStatesModel.fromJson(data);
+  //     }else{
+  //       // return WorldStatesModel.fromJson(data);
+  //       throw Exception();
+        
+  //     }
+  //   }
+
+
+
+  //
   @override
   Widget build(BuildContext context) {
 final height = MediaQuery.sizeOf(context).height *1;
@@ -92,22 +114,18 @@ final width = MediaQuery.sizeOf(context).width *1;
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                height: 50, width: double.infinity,
+                height: height*0.07, width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white
                   ),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> CountriesList()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const  CountriesList()));
                   }, 
-                  child: Text("Track countries")),
+                  child:const  Text("Track countries")),
               ),
             )
-
-
-                    //
-
                   ],
                 );
 

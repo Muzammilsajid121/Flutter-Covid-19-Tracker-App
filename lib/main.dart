@@ -1,3 +1,4 @@
+import 'package:covid_tracker_app/View/countries_list.dart';
 import 'package:covid_tracker_app/View/splash_screen.dart';
 import 'package:covid_tracker_app/View/world_states.dart';
 import 'package:flutter/material.dart';
@@ -33,10 +34,10 @@ class MyApp extends StatelessWidget {
             bodyMedium: GoogleFonts.montserrat(
                 fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
             //
-            //Body Large; choosen by theme
-            bodyLarge: GoogleFonts.roboto(fontSize: 19,  fontWeight: FontWeight.w700, color: Colors.black),
-            //
-            titleMedium: GoogleFonts.montserrat(fontSize: 31, color: Colors.black , fontWeight: FontWeight.bold),
+            // //Body Large; choosen by theme
+            // bodyLarge: GoogleFonts.roboto(fontSize: 19,  fontWeight: FontWeight.w700, color: Colors.black),
+            // //
+            // titleMedium: GoogleFonts.montserrat(fontSize: 31, color: Colors.black , fontWeight: FontWeight.bold),
 
         ),
           appBarTheme: const  AppBarTheme(
@@ -49,3 +50,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
