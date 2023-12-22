@@ -1,7 +1,7 @@
-
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shimmer/shimmer.dart';
 
 
 class CountriesList2 extends StatefulWidget {
@@ -21,7 +21,7 @@ class _CountriesListState extends State<CountriesList2> {
  final height = MediaQuery.sizeOf(context).height *1;
 final width = MediaQuery.sizeOf(context).width *1;
     return  Scaffold(
-      backgroundColor: Colors.amber,
+      // backgroundColor: Colors.pink[100],
       appBar: AppBar(
        title: const Text("Countries List"),
       ),
@@ -30,28 +30,65 @@ final width = MediaQuery.sizeOf(context).width *1;
         child: Column(
           children: [
             SizedBox(height: height*0.01,),
+            //Text Form Field
             TextFormField(
-              decoration: InputDecoration(
-         hintText: "Search any Country", hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
-                border: OutlineInputBorder()
+              style:const  TextStyle(color: Colors.white),
+              controller: searchController,
+              //For search
+              onChanged: (value) {
+                setState(() {
+                });
+              },
+              //
+  decoration: InputDecoration(
+  hintText: "Search any Country",
+   hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+
+  
+                border: const  OutlineInputBorder()
               ),
-              // controller: SearchController(),
+              
             ),
             FutureBuilder(
               future: statesServices.fetchWorldCountriesApi(),
                builder: ((context, AsyncSnapshot<List<dynamic>> snapshot) {
+                  
+                  //  if(!snapshot.hasData){   
+                  //   // show shimmer effect
+                  // return ListView.builder(
+                  // itemCount:3, //shimmer effect ki length
+                  // itemBuilder: (context, index){
+                  //   return Shimmer.fromColors(
+                      
+                  //     baseColor: Colors.grey.shade700, 
+                  //     highlightColor: Colors.grey.shade200, 
+                  //     child:  Column(
+                  //     children: [
+                  //       ListTile(
+                  //         title: Container(height: 10, width: 80, color: Colors.white,),
+                  //         subtitle: Container(height: 10, width: 80, color: Colors.white,),
+                  //         leading: Container(height: 50, width: 50, color: Colors.white,)
+                  //       )
+                        
+                  //     ],
+                  //   ),
+                  //     );
+                  
+                        
+                  // });}
+//                   //shimmer
                     
-                // if(!snapshot.hasData){
-                 
-                //   return const SpinKitChasingDots(color: Colors.red,);
+                if(!snapshot.hasData){   
+                  return const SpinKitChasingDots(color: Colors.red,);
+                }
 
-                 if (snapshot.connectionState == ConnectionState.waiting) {
-      return const SpinKitChasingDots(color: Colors.red);
-    } else if (snapshot.hasError) {
-      return Text('Error: ${snapshot.error}');
-    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-      return const Text('No data available');
-       }
+    //              if (snapshot.connectionState == ConnectionState.waiting) {
+    //   return const SpinKitChasingDots(color: Colors.red);
+    // } else if (snapshot.hasError) {
+    //   return Text('Error: ${snapshot.error}');
+    // } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+    //   return const Text('No data available');
+    //    }
                  
                   
                
@@ -60,12 +97,19 @@ final width = MediaQuery.sizeOf(context).width *1;
                     child: ListView.builder(
                     itemCount:snapshot.data!.length ,
                     itemBuilder: (context, index){
-                      // var countryData = snapshot.data![index];
-                      return Column(
+
+
+                      // Search Country Name
+                      String name = snapshot.data![index]['country'];
+                     // Agar empty to sab dikhadoo
+                      if(searchController.text.isEmpty){
+                         return Column(
                         children: [
                           ListTile(
-                            title: Text(snapshot.data![index]['country']),
-                            subtitle: Text(snapshot.data![index]['cases'].toString()),
+                          title: Text(snapshot.data![index]['country']),
+                            titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                            subtitle: Text(snapshot.data![index]['cases'].toString(),),
+                            subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
                           
                             leading: Image(
                               height: height*0.09 , width: width*0.09,
@@ -76,7 +120,31 @@ final width = MediaQuery.sizeOf(context).width *1;
                           
                         ],
                       );
+
+                      }else if(name.toLowerCase().contains(searchController.text.toLowerCase())){
+                            return Column(
+                        children: [
+                          ListTile(
+                            title: Text(snapshot.data![index]['country']),
+                            titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                            subtitle: Text(snapshot.data![index]['cases'].toString(),),
+                            subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
+                           
                           
+                            leading: Image(
+                              height: height*0.09 , width: width*0.09,
+                              image: NetworkImage(
+                              snapshot.data![index]['countryInfo']['flag'] ,
+                            )),
+                          )
+                          
+                        ],
+                      );
+
+                      }else{
+                        return Container();
+                      }
+  
                     }),
                   );
                     
