@@ -7,10 +7,10 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin{
+class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin{
 //ANIMATINON CODE
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 3),
@@ -32,15 +32,15 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   }
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 30), switchToWorldScreen);
+    Future.delayed(const Duration(seconds: 3), switchToWorldScreen);
     super.initState();
   }
   //
 
   @override
   Widget build(BuildContext context) {
-// final height = MediaQuery.sizeOf(context).height *1;
-// final width = MediaQuery.sizeOf(context).width *1;
+final height = MediaQuery.sizeOf(context).height *1;
+final width = MediaQuery.sizeOf(context).width *1;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -50,8 +50,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
             AnimatedBuilder(
               animation: _controller, 
               child: SizedBox(
-                height: 200,
-                width: 200,
+                height: height*0.3,
+                width: width*0.3,
                 child: Center(
                   child: Image.asset('assets/virus.png'),
                 ),
@@ -62,8 +62,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   child: child,);
               }),
 
-              SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-Center(child: Text('Coivd-19 Tracker App',style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),))
+     SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+Center(child: Text('Coivd-19 Tracker App',style: Theme.of(context).textTheme.bodyLarge)),
+Center(child: Text('By Muzammil',style: Theme.of(context).textTheme.bodySmall)),
 
           ],
         ),

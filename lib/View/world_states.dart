@@ -1,5 +1,6 @@
 import 'package:covid_tracker_app/View/countrylist.dart';
 import 'package:covid_tracker_app/models/world_states_model.dart';
+import 'package:covid_tracker_app/services/utilities/reusable_row.dart';
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,26 +35,6 @@ class _WorldStatesState extends State<WorldStates> with TickerProviderStateMixin
   //
   StatesServices statesServices = StatesServices(); // takay api wali screen s data l sakay
 
-
-  // //API CODE
-  // Future<WorldStatesModel> fetchWorldStatesApi() async{
-  //   final response = await http.get(Uri.parse(AppUrl.worldStatesApi));
-
-  //   var data = jsonDecode(response.body.toString());
-
-  //     if(response.statusCode==200){
-        
-  //       return WorldStatesModel.fromJson(data);
-  //     }else{
-  //       // return WorldStatesModel.fromJson(data);
-  //       throw Exception();
-        
-  //     }
-  //   }
-
-
-
-  //
   @override
   Widget build(BuildContext context) {
 final height = MediaQuery.sizeOf(context).height *1;
@@ -68,7 +49,9 @@ final width = MediaQuery.sizeOf(context).width *1;
             builder: (context, AsyncSnapshot<WorldStatesModel> snapshot){
 
               if(!snapshot.hasData){
-                return const  SpinKitChasingDots(color: Colors.red,);
+                return  Center(child:  SpinKitFadingCube(
+                color: Color.fromARGB(255, 218, 89, 132),
+                size: height*0.06,));
 
               }else{
                 return Column(
@@ -133,33 +116,8 @@ final width = MediaQuery.sizeOf(context).width *1;
 
             }),
 
-
-          
-            
         ],
       ),
-    );
-  }
-}
-
-class ReusableRow extends StatelessWidget {
-  final String title, value;
-   ReusableRow({super.key, required this.title, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return  Padding(padding: EdgeInsets.all(12),
-      child: Column(
-        children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title),
-            Text(value),
-          ],
-        )
-      ]),
-
     );
   }
 }
