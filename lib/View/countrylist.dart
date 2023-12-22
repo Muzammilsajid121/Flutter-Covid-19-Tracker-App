@@ -1,3 +1,4 @@
+import 'package:covid_tracker_app/View/countries_detail.dart';
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -81,17 +82,7 @@ final width = MediaQuery.sizeOf(context).width *1;
                 if(!snapshot.hasData){   
                   return const SpinKitChasingDots(color: Colors.red,);
                 }
-
-    //              if (snapshot.connectionState == ConnectionState.waiting) {
-    //   return const SpinKitChasingDots(color: Colors.red);
-    // } else if (snapshot.hasError) {
-    //   return Text('Error: ${snapshot.error}');
-    // } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-    //   return const Text('No data available');
-    //    }
-                 
-                  
-               
+     
                 else{
                   return Expanded(
                     child: ListView.builder(
@@ -105,17 +96,35 @@ final width = MediaQuery.sizeOf(context).width *1;
                       if(searchController.text.isEmpty){
                          return Column(
                         children: [
-                          ListTile(
-                          title: Text(snapshot.data![index]['country']),
-                            titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
-                            subtitle: Text(snapshot.data![index]['cases'].toString(),),
-                            subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
-                          
-                            leading: Image(
-                              height: height*0.09 , width: width*0.09,
-                              image: NetworkImage(
-                              snapshot.data![index]['countryInfo']['flag'],
-                            )),
+                          InkWell(
+                            onTap: () {
+                              //
+                                 Navigator.push(context, MaterialPageRoute(
+                                builder: (context)=>  CountryDetailScreen(
+                                  // Country deatail screen k parameter doo required
+                                  name: snapshot.data![index]['country'],
+                                  image: snapshot.data![index]['countryInfo']['flag'],
+                                  totalCases:snapshot.data![index]['cases'] ,
+                                  active: snapshot.data![index]['active'],
+                                  critical:snapshot.data![index]['critical'],
+                                  deaths:snapshot.data![index]['deaths'],
+                                  todayDeaths:snapshot.data![index]['todayDeaths'],
+                                  todayRecovered: snapshot.data![index]['todayRecovered'],
+                                )));
+                              
+                            },
+                            child: ListTile(
+                            title: Text(snapshot.data![index]['country']),
+                              titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                              subtitle: Text(snapshot.data![index]['cases'].toString(),),
+                              subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
+                            
+                              leading: Image(
+                                height: height*0.09 , width: width*0.09,
+                                image: NetworkImage(
+                                snapshot.data![index]['countryInfo']['flag'],
+                              )),
+                            ),
                           )
                           
                         ],
@@ -124,18 +133,35 @@ final width = MediaQuery.sizeOf(context).width *1;
                       }else if(name.toLowerCase().contains(searchController.text.toLowerCase())){
                             return Column(
                         children: [
-                          ListTile(
-                            title: Text(snapshot.data![index]['country']),
-                            titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
-                            subtitle: Text(snapshot.data![index]['cases'].toString(),),
-                            subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
-                           
-                          
-                            leading: Image(
-                              height: height*0.09 , width: width*0.09,
-                              image: NetworkImage(
-                              snapshot.data![index]['countryInfo']['flag'] ,
-                            )),
+                          InkWell(
+                            onTap: () {
+                              //
+                                 Navigator.push(context, MaterialPageRoute(
+                                builder: (context)=>  CountryDetailScreen(
+                                  // Country deatail screen k parameter doo required
+                                  name: snapshot.data![index]['country'],
+                                  image: snapshot.data![index]['countryInfo']['flag'],
+                                  totalCases:snapshot.data![index]['cases'] ,
+                                  active: snapshot.data![index]['active'],
+                                  critical:snapshot.data![index]['critical'],
+                                  deaths:snapshot.data![index]['deaths'],
+                                  todayDeaths:snapshot.data![index]['todayDeaths'],
+                                  todayRecovered: snapshot.data![index]['todayRecovered'],
+                                )));
+                            },
+                            child: ListTile(
+                              title: Text(snapshot.data![index]['country']),
+                              titleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                              subtitle: Text(snapshot.data![index]['cases'].toString(),),
+                              subtitleTextStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white), 
+                             
+                            
+                              leading: Image(
+                                height: height*0.09 , width: width*0.09,
+                                image: NetworkImage(
+                                snapshot.data![index]['countryInfo']['flag'] ,
+                              )),
+                            ),
                           )
                           
                         ],

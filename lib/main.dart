@@ -1,4 +1,3 @@
-import 'package:covid_tracker_app/View/countries_list.dart';
 import 'package:covid_tracker_app/View/splash_screen.dart';
 import 'package:covid_tracker_app/View/world_states.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Covid-19 Tracker',
       theme: ThemeData(
      
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
             bodyMedium: GoogleFonts.montserrat(
                 fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
             //
-            // //Body Large; choosen by theme
-            // bodyLarge: GoogleFonts.roboto(fontSize: 19,  fontWeight: FontWeight.w700, color: Colors.black),
+            //Body Large; choosen by theme
+            bodyLarge: GoogleFonts.aBeeZee(fontSize: 19,  fontWeight: FontWeight.w700, color: Colors.white),
             // //
             // titleMedium: GoogleFonts.montserrat(fontSize: 31, color: Colors.black , fontWeight: FontWeight.bold),
 
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 
         //
       ),
-      home: const WorldStates(),
+      home: const SplashScreen(),
     );
   }
 }
