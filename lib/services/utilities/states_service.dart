@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:covid_tracker_app/models/world_countiries_model.dart';
 import 'package:covid_tracker_app/models/world_states_model.dart';
 import 'package:covid_tracker_app/services/app_urls.dart';
 

@@ -1,4 +1,3 @@
-import 'package:covid_tracker_app/View/countries_list.dart';
 import 'package:covid_tracker_app/View/countrylist.dart';
 import 'package:covid_tracker_app/models/world_states_model.dart';
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
