@@ -1,5 +1,4 @@
 import 'package:covid_tracker_app/View/splash_screen.dart';
-import 'package:covid_tracker_app/View/world_states.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

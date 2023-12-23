@@ -2,7 +2,7 @@ import 'package:covid_tracker_app/View/countries_detail.dart';
 import 'package:covid_tracker_app/services/utilities/states_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:shimmer/shimmer.dart';
+
 
 
 class CountriesList2 extends StatefulWidget {
@@ -24,11 +24,14 @@ final width = MediaQuery.sizeOf(context).width *1;
     return  Scaffold(
       // backgroundColor: Colors.pink[100],
       appBar: AppBar(
-       title: const Text("Countries List"),
+      title: Text('Countries',style: Theme.of(context).textTheme.bodyLarge,),
+       centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: height*0.01,),
             //Text Form Field
@@ -79,9 +82,12 @@ final width = MediaQuery.sizeOf(context).width *1;
                   // });}
 //                   //shimmer
                     
-                if(!snapshot.hasData){   
-                  return const SpinKitChasingDots(color: Colors.red,);
-                }
+                if(!snapshot.hasData){
+                return  SpinKitHourGlass(
+                color: const Color.fromARGB(255, 212, 209, 3),
+                size: height*0.04,);
+           
+              }
      
                 else{
                   return Expanded(
