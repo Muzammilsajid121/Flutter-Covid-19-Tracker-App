@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -27,7 +28,7 @@ class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixi
 
   //splash
  void switchToWorldScreen() {
-    Navigator.pushReplacement(   //push replacement means you cant go back to this screen
+    Navigator.pushReplacement(   
         context, MaterialPageRoute(builder: (context) =>const  WorldStates()));
   }
   @override
@@ -65,6 +66,7 @@ final width = MediaQuery.sizeOf(context).width *1;
      SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 Center(child: Text('Coivd-19 Tracker App',style: Theme.of(context).textTheme.bodyLarge)),
 Center(child: Text('By Muzammil',style: Theme.of(context).textTheme.bodySmall)),
+
 
           ],
         ),
