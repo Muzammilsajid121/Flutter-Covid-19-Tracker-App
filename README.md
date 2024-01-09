@@ -31,4 +31,9 @@ Welcome to the Covid-19 Tracker App, your go-to tool for staying informed about 
 
 We welcome contributions from the community to enhance the app's functionality, user experience, and data accuracy. If you have ideas, bug fixes, or new features to propose, feel free to submit a pull request.
 
+## Screenshots
+
+![Screenshot 1](projectphotos/covid19picc.png)
+![Screenshot 2](projectphotos/covid19pix.png)
+
 
