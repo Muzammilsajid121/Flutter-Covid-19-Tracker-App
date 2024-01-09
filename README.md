@@ -37,11 +37,11 @@ We welcome contributions from the community to enhance the app's functionality, 
 <br>
 ![Screenshot 2](projectphotos/covid19pix.png)
 <br>
-![Screenshot 1](projectphotos/covid19picc.png)
+![Screenshot 1](projectphotos/covid19picc.png) <br>
 <br>
 ![Screenshot 2](projectphotos/flutter api app.png)
-<br>
-![Screenshot 2](projectphotos/flutterapp1.png)
+
+
 
 
 
