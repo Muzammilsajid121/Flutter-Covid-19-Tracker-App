@@ -34,11 +34,11 @@ We welcome contributions from the community to enhance the app's functionality, 
 ## Screenshots
 
 ![Screenshot 1](projectphotos/covid19trackerappflutter.png) 
-<br>
+
 ![Screenshot 2](projectphotos/covid19pix.png)
-<br>
-![Screenshot 1](projectphotos/covid19picc.png) <br>
-<br>
+
+![Screenshot 1](projectphotos/covid19picc.png) 
+
 ![Screenshot 2](projectphotos/flutter api app.png)
 
 
